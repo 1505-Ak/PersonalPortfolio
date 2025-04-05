@@ -35,7 +35,7 @@ export default function Hero() {
         }}
         className="flex flex-col items-center"
       >
-        <div className="w-64 h-64 relative">
+        <div className="w-48 h-48 md:w-64 md:h-64 relative">
           <Canvas>
             <OrbitControls enableZoom={false} autoRotate />
             <ambientLight intensity={0.5} />
@@ -44,14 +44,14 @@ export default function Hero() {
           </Canvas>
         </div>
 
-        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
+        <h2 className="text-xs md:text-sm uppercase text-gray-500 pb-2 tracking-[10px] md:tracking-[15px]">
           Software Engineer
         </h2>
-        <h1 className="text-5xl lg:text-6xl font-semibold px-10">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold px-4 md:px-10">
           <span className="mr-3">Anulome Kishore</span>
         </h1>
 
-        <div className="pt-5 space-x-2">
+        <div className="pt-5 flex flex-wrap justify-center gap-2 px-4">
           <a href="#about">
             <button className="heroButton">About</button>
           </a>
