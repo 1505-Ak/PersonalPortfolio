@@ -1,11 +1,14 @@
 'use client';
 
-import Hero from '@/components/Hero'
-import About from '@/components/About'
-import Experience from '@/components/Experience'
-import Skills from '@/components/Skills'
-import Projects from '@/components/Projects'
-import Contact from '@/components/Contact'
+import dynamic from 'next/dynamic';
+import About from '@/components/About';
+import Experience from '@/components/Experience';
+import Skills from '@/components/Skills';
+import Contact from '@/components/Contact';
+
+// Dynamically import components with 3D elements
+const Hero = dynamic(() => import('@/components/Hero'), { ssr: false });
+const Projects = dynamic(() => import('@/components/Projects'), { ssr: false });
 
 export default function Home() {
   return (
@@ -34,5 +37,5 @@ export default function Home() {
         <Contact />
       </section>
     </div>
-  )
+  );
 } 
