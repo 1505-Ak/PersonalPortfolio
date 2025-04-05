@@ -1,22 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere } from '@react-three/drei';
+import dynamic from 'next/dynamic';
 
-function AnimatedSphere() {
-  return (
-    <Sphere visible args={[1, 100, 200]} scale={2}>
-      <meshStandardMaterial
-        color="#9333ea"
-        wireframe
-        roughness={0.1}
-        metalness={0.8}
-      />
-    </Sphere>
-  );
-}
+const Scene = dynamic(() => import('@/components/Scene'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-purple-500/20 animate-pulse" />
+  ),
+});
 
 export default function Hero() {
   return (
@@ -36,12 +29,9 @@ export default function Hero() {
         className="flex flex-col items-center"
       >
         <div className="w-48 h-48 md:w-64 md:h-64 relative">
-          <Canvas>
-            <OrbitControls enableZoom={false} autoRotate />
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[-2, 5, 2]} intensity={1} />
-            <AnimatedSphere />
-          </Canvas>
+          <Suspense fallback={<div className="w-full h-full rounded-full bg-purple-500/20 animate-pulse" />}>
+            <Scene />
+          </Suspense>
         </div>
 
         <h2 className="text-xs md:text-sm uppercase text-gray-500 pb-2 tracking-[10px] md:tracking-[15px]">
