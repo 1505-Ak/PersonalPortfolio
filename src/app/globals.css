@@ -37,13 +37,6 @@ body {
   }
 }
 
-/* Custom scrollbar styles */
-@layer utilities {
-  .scrollbar {
-    @apply scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-purple-500/80;
-  }
-}
-
 /* Media query for small screens */
 @media (max-width: 640px) {
   .snap-mandatory {
